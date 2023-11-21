@@ -1,5 +1,6 @@
 package com.project.shopapp.dtos;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 @Data
@@ -8,6 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserLoginDTO {
-    private String phone_number;
+    @JsonProperty("phone_number")
+    private String phoneNumber;
 
 }

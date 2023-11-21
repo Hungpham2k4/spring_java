@@ -11,20 +11,22 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/user")
+@RequestMapping("${api.prefix}/user")
 public class UserController {
     @PostMapping("/register")
-    public ResponseEntity<?> createUser(@Valid @ModelAttribute UserDTO userDTO, BindingResult result){
+    public ResponseEntity<?> createUser(@Valid @RequestBody UserDTO userDTO, BindingResult result){
         try{
             if (result.hasErrors()){
                 List<String> ErrorMessage = result.getFieldErrors().stream().map(FieldError::getDefaultMessage).toList();
                 return ResponseEntity.badRequest().body(ErrorMessage);
             }
-//            return ResponseEntity.ok("Register Successfully");
+            if (!userDTO.getPassword().equals(userDTO.getConfirmPassword())){
+                return ResponseEntity.badRequest().body("Password does not match");
+            }
+            return ResponseEntity.ok("Register Successfully" + userDTO);
         }catch (Exception e){
             return ResponseEntity.badRequest().body(e.getMessage());
         }
-        return null;
     }
 
     @PostMapping("/login")

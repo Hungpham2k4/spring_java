@@ -11,7 +11,7 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController
-@RequestMapping("api/v1/category")
+@RequestMapping("${api.prefix}/category")
 public class CategoryController {
 
     @GetMapping()
@@ -31,7 +31,7 @@ public class CategoryController {
             List<String> ErrorMessage = result.getFieldErrors().stream().map(FieldError::getDefaultMessage).toList();
             return ResponseEntity.badRequest().body(ErrorMessage);
         }
-        return ResponseEntity.ok("This is insertCategory" + categoryDTO);
+        return ResponseEntity.ok("This is insertCategory");
     }
 
     @PutMapping("/{id}")

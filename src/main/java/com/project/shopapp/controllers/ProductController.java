@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("api/v1/product")
+@RequestMapping("${api.prefix}/product")
 public class ProductController {
     //Lấy tất cả các sản phẩm
     @GetMapping("")
