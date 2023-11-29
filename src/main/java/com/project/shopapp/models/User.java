@@ -3,12 +3,16 @@ package com.project.shopapp.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Date;
+
 @Entity
 @Table(name = "users")
 @Data
 @Getter
 @Setter
 @AllArgsConstructor
+@Builder
+
 @NoArgsConstructor
 public class User extends BaseEntity{
     @Id
@@ -31,7 +35,7 @@ public class User extends BaseEntity{
     private Boolean active;
 
     @Column(name = "date_of_birth")
-    private Data dateOfBirth;
+    private Date dateOfBirth;
 
     @Column(name = "facebook_account_id")
     private int facebookAccountId;

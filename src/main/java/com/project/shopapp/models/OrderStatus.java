@@ -1,5 +1,9 @@
 package com.project.shopapp.models;
 
+import lombok.Builder;
+
+@Builder
+
 public class OrderStatus {
     public static final String PENDING = "pending";
     public static final String PROCESSING = "processing";

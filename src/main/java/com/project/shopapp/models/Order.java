@@ -13,6 +13,8 @@ import java.util.Date;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
+
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
